@@ -53,7 +53,6 @@ Om du känner dig klar med grundkraven och vill utmana dig själv, kan du testa 
 - **Felhantering**: Hur väl hanteras fel? Får användaren tydliga felmeddelanden vid problem?
 - **Användargränssnitt**: Är applikationen enkel och trevlig att använda?
 - **Kodkvalitet**: Är koden strukturerad och kommenterad på ett begripligt sätt?
-- **Presentation**: Hur väl presenterade du ditt projekt och reflekterade över dina lösningar?
 
 ---
 
