@@ -1,6 +1,4 @@
-Självklart! Här är en projektbeskrivning skriven i Markdown som du kan använda direkt för dina studenter:
 
-```markdown
 # **Individuellt Projekt: CRUD-applikation med Local Storage**
 
 ## **Översikt**
@@ -60,4 +58,4 @@ Om du känner dig klar med grundkraven och vill utmana dig själv, kan du testa 
 ---
 
 Lycka till med ditt projekt! Om du har några frågor eller stöter på problem under arbetets gång, tveka inte att fråga.
-```
+
