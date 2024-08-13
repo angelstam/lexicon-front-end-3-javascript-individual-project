@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/22fe18faa8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/common.css" />
     <title> Movies </title>
   </head>
@@ -11,8 +12,33 @@
       <h1>Movies</h1>
       <nav><a href="./favorites.html">Favorites</a></nav>
     </header>
+    <main>
+      <h2>Search for movies and series</h2>
+      <form name="search">
+        <label for="query">Query</label>
+        <input type="text" name="query" required aria-required="true">
+        <label for="year">Year</label>
+        <input type="text" name="year">
+        <label for="type">Type</label>
+        <select name="type">
+          <option value="">Any</option>
+          <option value="movie">Movie</option>
+          <option value="series">Series</option>
+          <option value="episode">Series Episode</option>
+        </select>
+        <button type="submit">Search</button>
+      </form>
+      <article>
+        <h3>Search results <span id="num-results"></span></h3>
+        <section id="search-results">
+          <h4>Title (year) <i class="fa-regular fa-heart"></i></h4>
+        </section>
+      </article>
+    </main>
     <script src="scripts/secrets.js"></script>
+    <script src="scripts/shared.js"></script>
     <script src="scripts/favorites.js"></script>
     <script src="scripts/omdb-api.js"></script>
+    <script src="scripts/index.js"></script>
   </body>
 </html>
