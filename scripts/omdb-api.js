@@ -8,7 +8,7 @@ async function searchOmdbMovie(str, type, year, page) {
     let query = "s=" + str;
     if (type) query += "&type=" + type;
     if (year) query += "&y=" + year;
-    if (year) page += "&page=" + page;
+    if (page) query += "&page=" + page;
 
     return (await fetchFromOmdbApi(query));
 }
