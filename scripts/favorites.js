@@ -3,17 +3,17 @@ window.addEventListener("load", () => {
 });
 
 
-function renderFavorites() {
+async function renderFavorites() {
     const favorites = document.querySelector("#favorites");
 
     const favoriteIds = getFavorites();
 
     if (favoriteIds.length > 0) {
-
-        favoriteIds.forEach(favoriteId => {
-            const movie = document.createElement("h4");
-            movie.textContent = `# ${favoriteId} `; //${result.Title} (${result.Year})`;
-            favorites.appendChild(movie);
+        favoriteIds.forEach(async favoriteId => {
+            const movie = await getOmdbMovieByIMDbId(favoriteId);
+            const e = document.createElement("h4");
+            e.textContent = `${movie.Title} (${movie.Year})`;
+            favorites.appendChild(e);
         });
     } else {
         const error = document.createElement("h4");
