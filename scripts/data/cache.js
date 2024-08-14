@@ -13,3 +13,10 @@ function removeFromCache(cacheId) {
 function existsInCache(cacheId) {
     return localStorage.getItem("cache-" + cacheId) !== null;
 }
+
+function clearCache() {
+    Object.keys(localStorage).filter(key => key.indexOf("cache-") === 0).forEach(key => {
+        localStorage.removeItem(key);
+        console.log("Removed from cache:", key);
+    });
+}
