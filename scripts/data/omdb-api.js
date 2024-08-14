@@ -1,7 +1,19 @@
 const OMDB_API_BASE_URL = "http://www.omdbapi.com/?apikey=" + OMDB_API_KEY + "&";
 
-async function getOmdbMovieByIMDbId(id) {
-    return (await fetchFromOmdbApi("i=" + id));
+async function getOmdbMovieByIMDbId(id, updateCache = false) {
+    if (existsInCache(id) && !updateCache) {
+        return retrieveFromCache(id);
+    } else {
+        const movie = await fetchFromOmdbApi("i=" + id);
+
+        if (id === movie.imdbID) {
+            storeInCache(id, movie);
+            return movie;
+        } else {
+            console.warn("Requested ID does not match received imdbId", movie);
+            return false;
+        }
+    }
 }
 
 async function searchOmdbMovie(str, type, year, page) {
