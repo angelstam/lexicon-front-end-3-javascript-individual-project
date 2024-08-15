@@ -43,7 +43,10 @@ async function renderSearchResults(search) {
 
         answer.Search.forEach(result => {
             const h4 = document.createElement("h4");
-            h4.textContent = result.Title + " (" + result.Year + ")";
+            const a = document.createElement("a");
+            a.href = "details.html?id=" + result.imdbID;
+            a.textContent = result.Title + " (" + result.Year + ")";
+            h4.appendChild(a);
             h4.appendChild(getFavoriteElement(result.imdbID));
             searchResults.appendChild(h4);
         });

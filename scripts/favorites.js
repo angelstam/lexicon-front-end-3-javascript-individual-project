@@ -12,7 +12,10 @@ async function renderFavorites() {
         favoriteIds.forEach(async favoriteId => {
             const movie = await getOmdbMovieByIMDbId(favoriteId);
             const e = document.createElement("h4");
-            e.textContent = `${movie.Title} (${movie.Year})`;
+            const a = document.createElement("a");
+            a.href = "details.html?id=" + favoriteId;
+            a.textContent = `${movie.Title} (${movie.Year})`;
+            e.appendChild(a);
             favorites.appendChild(e);
         });
     } else {
