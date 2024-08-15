@@ -4,7 +4,7 @@ async function getOmdbMovieByIMDbId(id, updateCache = false) {
     if (existsInCache(id) && !updateCache) {
         return retrieveFromCache(id);
     } else {
-        const movie = await fetchFromOmdbApi("i=" + id);
+        const movie = await fetchFromOmdbApi("i=" + id + "&plot=full");
 
         if (id === movie.imdbID) {
             storeInCache(id, movie);
