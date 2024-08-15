@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/22fe18faa8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/common.css" />
+    <link rel="stylesheet" href="styles/details.css" />
     <title> Movies </title>
   </head>
   <body>
@@ -14,36 +15,24 @@
     </header>
     <main>
       <img id="poster">
-      <i class="fa-regular fa-heart"></i>
-      <section id="details">
-        <h2>Details</h2>
-        <dl>
-          <dt>Actors</dt>
-          <dd id="actors"></dd>
-
-          <dt>Awards</dt>
-          <dd id="awards"></dd>
-
-          <dt>Country</dt>
-          <dd id="country"></dd>
-
-          <dt>Director</dt>
-          <dd id="director"></dd>
-
-          <dt>Genre</dt>
-          <dd id="genre"></dd>
-
-          <dt>Plot</dt>
-          <dd id="plot"></dd>
-        </dl>
-      </section>
-      <section id="ratings">
-        <h2>Ratings</h2>
-        <dl id="ratings"></dl>
-      </section>
+      <article id="data">
+        <section id="plot">
+          <span id="favorite-icon"></span>
+          <p></p>
+        </section>
+        <section id="details">
+          <h2>Details</h2>
+          <dl></dl>
+        </section>
+        <section id="ratings">
+          <h2>Ratings</h2>
+          <dl id="ratings"></dl>
+        </section>
+      </article>
     </main>
     <script src="scripts/secrets.js"></script>
     <script src="scripts/shared.js"></script>
+    <script src="scripts/shared-ui.js"></script>
     <script src="scripts/data/cache.js"></script>
     <script src="scripts/data/favorites.js"></script>
     <script src="scripts/data/omdb-api.js"></script>

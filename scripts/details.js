@@ -4,8 +4,19 @@ window.addEventListener("load", () => {
 
 
 async function renderDetails() {
-    const title = document.querySelector("title");
-    const heading = document.querySelector("#details-heading");
+    const title = getE("title");
+    const heading = getE("#details-heading");
+    const includedDetails = [
+        'Actors',
+        'Awards',
+        'Country',
+        'Director',
+        'Genre',
+        'Language',
+        'Released',
+        'Runtime',
+        'Writer',
+    ];
 
     const detailId = getIdFromQueryString();
 
@@ -21,30 +32,38 @@ async function renderDetails() {
         return;
     }
 
+    // Render Title
     title.textContent = movie.Title;
     heading.textContent = `${movie.Title} (${movie.Year})`;
 
-    getE("#actors").textContent = movie.Actors;
-    getE("#awards").textContent = movie.Awards;
-    getE("#country").textContent = movie.Country;
-    getE("#director").textContent = movie.Director;
-    getE("#genre").textContent = movie.Genre;
-    getE("#plot").textContent = movie.Plot;
+    // Render Plot and Favorite icon
+    const favoriteElement = getFavoriteElement(detailId);
+    getE("#favorite-icon").appendChild(favoriteElement);
+    getE("#plot > p").textContent = movie.Plot;
 
+    // Render Details
+    const detailDescription = getE("#details > dl");
+    includedDetails.forEach(detailName => {
+        appendDtDdToElement(detailDescription, detailName, movie[detailName]);
+    });
+
+    // Set Poster
     getE("#poster").src = movie.Poster;
-    getE("#poster").alt = "Poster for " + movie.Title;
+    getE("#poster").alt = `Poster for ${movie.Title} (${movie.Year})`;
 
-
+    // Render Ratings
     const ratings = getE("#ratings");
     movie.Ratings.forEach(rating => {
         appendDtDdToElement(ratings, rating.Source, rating.Value);
     })
 }
 
+// Helper to make DOM-queries shorter
 function getE(selector) {
     return document.querySelector(selector);
 }
 
+// Helper to add an item to a description list
 function appendDtDdToElement(element, dtText, ddText) {
     const dt = document.createElement("dt");
     dt.textContent = dtText;
