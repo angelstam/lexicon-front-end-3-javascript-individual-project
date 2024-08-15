@@ -56,31 +56,3 @@ async function renderSearchResults(search) {
         searchResults.appendChild(error);
     }
 }
-
-function getFavoriteElement(id) {
-    const element = document.createElement("i");
-
-    if (isFavorite(id)) {
-        element.classList.add("fa-solid");
-    } else {
-        element.classList.add("fa-regular");
-    }
-
-    element.classList.add("fa-heart");
-    element.dataset.imdbId = id;
-
-    element.addEventListener("click", event => {
-        console.log("favorite", id);
-        if (isFavorite(id)) {
-            removeFromFavorites(id);
-            event.target.classList.remove("fa-solid");
-            event.target.classList.add("fa-regular");
-        } else {
-            addToFavorites(id);
-            event.target.classList.remove("fa-regular");
-            event.target.classList.add("fa-solid");
-        }
-    });
-
-    return element;
-}
