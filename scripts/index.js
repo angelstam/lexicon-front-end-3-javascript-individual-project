@@ -1,3 +1,7 @@
+import { getFormData } from "./shared.js";
+import * as OMDb from "./data/omdb-api.js";
+import { getFavoriteElement } from "./shared-ui.js";
+
 window.addEventListener("load", () => {
     setupSearchListener();
 });
@@ -32,7 +36,7 @@ function searchListenerAction(event) {
 }
 
 async function renderSearchResults(search) {
-    const answer = await searchOmdbMovie(search.query, search.type, search.year);
+    const answer = await OMDb.searchOmdbMovie(search.query, search.type, search.year);
     const searchResults = document.querySelector("#search-results");
     const numResults = document.querySelector("#num-results");
     searchResults.textContent = "";

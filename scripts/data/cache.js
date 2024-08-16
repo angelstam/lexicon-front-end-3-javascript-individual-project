@@ -1,3 +1,5 @@
+export { storeInCache, retrieveFromCache, removeFromCache, existsInCache, clearCache };
+
 function storeInCache(cacheId, data) {
     localStorage.setItem("cache-" + cacheId, JSON.stringify(data));
 }

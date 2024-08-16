@@ -1,3 +1,5 @@
+export { getFormData, getIdFromQueryString };
+
 function getFormData(form) {
     return Object.fromEntries((new FormData(form)).entries());
 }

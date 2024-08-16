@@ -1,13 +1,17 @@
+export { getOmdbMovieByIMDbId, searchOmdbMovie };
+import * as Cache from "./cache.js";
+import { OMDB_API_KEY } from "../secrets.js";
+
 const OMDB_API_BASE_URL = "http://www.omdbapi.com/?apikey=" + OMDB_API_KEY + "&";
 
 async function getOmdbMovieByIMDbId(id, updateCache = false) {
-    if (existsInCache(id) && !updateCache) {
-        return retrieveFromCache(id);
+    if (Cache.existsInCache(id) && !updateCache) {
+        return Cache.retrieveFromCache(id);
     } else {
         const movie = await fetchFromOmdbApi("i=" + id + "&plot=full");
 
         if (id === movie.imdbID) {
-            storeInCache(id, movie);
+            Cache.storeInCache(id, movie);
             return movie;
         } else {
             console.warn("Requested ID does not match received imdbId", movie);

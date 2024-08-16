@@ -1,3 +1,7 @@
+import { getIdFromQueryString } from "./shared.js";
+import * as OMDb from "./data/omdb-api.js";
+import { getFavoriteElement } from "./shared-ui.js";
+
 window.addEventListener("load", () => {
     renderDetails();
 });
@@ -25,7 +29,7 @@ async function renderDetails() {
         return;
     }
 
-    const movie = await getOmdbMovieByIMDbId(detailId);
+    const movie = await OMDb.getOmdbMovieByIMDbId(detailId);
 
     if (movie === false) {
         heading.textContent = "Not Found!";

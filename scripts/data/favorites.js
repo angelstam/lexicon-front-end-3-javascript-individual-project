@@ -1,3 +1,5 @@
+export { getFavorites, setFavorites, addToFavorites, removeFromFavorites, isFavorite };
+
 function getFavorites() {
     return JSON.parse(localStorage.getItem("favorites")) || [];
 }

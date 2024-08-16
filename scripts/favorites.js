@@ -1,3 +1,6 @@
+import * as Favorites from "./data/favorites.js";
+import * as OMDb from "./data/omdb-api.js";
+
 window.addEventListener("load", () => {
     renderFavorites();
 });
@@ -6,11 +9,11 @@ window.addEventListener("load", () => {
 async function renderFavorites() {
     const favorites = document.querySelector("#favorites");
 
-    const favoriteIds = getFavorites();
+    const favoriteIds = Favorites.getFavorites();
 
     if (favoriteIds.length > 0) {
         favoriteIds.forEach(async favoriteId => {
-            const movie = await getOmdbMovieByIMDbId(favoriteId);
+            const movie = await OMDb.getOmdbMovieByIMDbId(favoriteId);
             const e = document.createElement("h4");
             const a = document.createElement("a");
             a.href = "details.html?id=" + favoriteId;
