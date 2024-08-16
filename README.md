@@ -1,3 +1,7 @@
+# Movies using the OMDb API
+1. Get an API-key from https://www.omdbapi.com/.
+2. Enter your OMDb API-key in `./scripts/secrets.js`.
+3. Deploy at the root of the repository.
 
 # **Individuellt Projekt: CRUD-applikation med Local Storage**
 
