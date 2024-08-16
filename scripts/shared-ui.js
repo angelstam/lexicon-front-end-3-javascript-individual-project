@@ -1,4 +1,4 @@
-export { getFavoriteElement };
+export { getFavoriteElement, getE };
 import * as Favorites from "./data/favorites.js";
 
 function getFavoriteElement(id) {
@@ -33,4 +33,9 @@ function getFavoriteElement(id) {
     });
 
     return element;
+}
+
+// Helper to make DOM-queries shorter
+function getE(selector) {
+    return document.querySelector(selector);
 }

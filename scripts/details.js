@@ -1,6 +1,6 @@
 import { getIdFromQueryString } from "./shared.js";
 import * as OMDb from "./data/omdb-api.js";
-import { getFavoriteElement } from "./shared-ui.js";
+import { getFavoriteElement, getE } from "./shared-ui.js";
 
 window.addEventListener("load", () => {
     renderDetails();
@@ -60,11 +60,6 @@ async function renderDetails() {
     movie.Ratings.forEach(rating => {
         appendDtDdToElement(ratings, rating.Source, rating.Value);
     })
-}
-
-// Helper to make DOM-queries shorter
-function getE(selector) {
-    return document.querySelector(selector);
 }
 
 // Helper to add an item to a description list
