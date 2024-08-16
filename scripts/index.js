@@ -45,6 +45,7 @@ function searchListenerAction(event) {
 }
 
 async function renderSearchResults(search) {
+    showSpinner();
     const answer = await OMDb.searchOmdbMovie(search.query, search.type, search.year);
 
     answer.SearchQuery = search;
@@ -64,6 +65,7 @@ async function renderSearchResults(search) {
         error.textContent = answer.Error;
         getE("#search-results").appendChild(error);
     }
+    hideSpinner();
 }
 
 function renderSearchResultAnswer(answer) {
@@ -110,6 +112,7 @@ function setupLoadMoreSearchResultsListener() {
             }
             search.page++;
 
+            showSpinner();
             const answer = await OMDb.searchOmdbMovie(search.query, search.type, search.year, search.page);
 
             if (answer.Response === "True") {
@@ -122,6 +125,7 @@ function setupLoadMoreSearchResultsListener() {
                 renderSearchResultAnswer(answer);
                 updateMoreSearchResultsElement();
             }
+            hideSpinner();
         }
     });
 }
@@ -146,4 +150,12 @@ function updateMoreSearchResultsElement() {
     } else {
         getE("#more-results").style.display = "none";
     }
+}
+
+function showSpinner() {
+    getE("#spinner").style.display = "inline";
+}
+
+function hideSpinner() {
+    getE("#spinner").style.display = "none";
 }
